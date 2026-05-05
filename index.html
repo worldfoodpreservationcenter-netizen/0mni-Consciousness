@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DCEMI Theory — Dipole Consciousness Electromagnetic Information</title>
+  <meta name="description" content="An animated visualization of Dr. Charles L. Wilson's DCEMI Theory of Consciousness — the unified heart-brain electromagnetic field as the seat of Omni-Consciousness." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       DESIGN TOKENS
+    ========================================================= */
+    :root {
+      --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+      --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+      --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+      --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+      --text-hero: clamp(3rem,     0.5rem  + 7vw,    8rem);
+
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+      --space-4: 1rem;    --space-5: 1.25rem; --space-6: 1.5rem;
+      --space-8: 2rem;    --space-10: 2.5rem; --space-12: 3rem;
+      --space-16: 4rem;   --space-20: 5rem;   --space-24: 6rem;
+      --space-32: 8rem;
+
+      --radius-sm: 0.375rem; --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;  --radius-xl: 1rem; --radius-full: 9999px;
+
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+      --content-narrow: 640px;
+      --content-default: 960px;
+      --content-wide: 1200px;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+
+      /* Dark palette — scientific / cosmic / spiritual */
+      --color-bg:              #09080f;
+      --color-surface:         #0e0c1a;
+      --color-surface-2:       #131122;
+      --color-surface-offset:  #1a1730;
+      --color-divider:         #2a2545;
+      --color-border:          #342f54;
+      --color-text:            #e8e4f5;
+      --color-text-muted:      #9990c2;
+      --color-text-faint:      #5a5480;
+      --color-text-inverse:    #09080f;
+
+      /* Heart gold */
+      --color-heart:           #f0a832;
+      --color-heart-glow:      rgba(240, 168, 50, 0.4);
+      --color-heart-dim:       rgba(240, 168, 50, 0.15);
+
+      /* Brain violet */
+      --color-brain:           #8b6eff;
+      --color-brain-glow:      rgba(139, 110, 255, 0.4);
+      --color-brain-dim:       rgba(139, 110, 255, 0.15);
+
+      /* Unified field — luminous white-lavender */
+      --color-omni:            #c8b8ff;
+      --color-omni-glow:       rgba(200, 184, 255, 0.5);
+
+      /* Primary CTA */
+      --color-primary:         #7c5cfc;
+      --color-primary-hover:   #9b7fff;
+
+      --shadow-sm:  0 1px 2px  oklch(0 0 0 / 0.4);
+      --shadow-md:  0 4px 12px oklch(0 0 0 / 0.5);
+      --shadow-lg:  0 12px 32px oklch(0 0 0 / 0.6);
+    }
+
+    /* =========================================================
+       BASE RESET
+    ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--space-16);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      min-height: 100dvh;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img, svg, canvas { display: block; max-width: 100%; }
+    h1,h2,h3,h4 { text-wrap: balance; line-height: 1.1; }
+    p, li { text-wrap: pretty; max-width: 72ch; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* =========================================================
+       LAYOUT UTILITIES
+    ========================================================= */
+    .container {
+      max-width: var(--content-default);
+      margin-inline: auto;
+      padding-inline: var(--space-6);
+    }
+    .container-wide {
+      max-width: var(--content-wide);
+      margin-inline: auto;
+      padding-inline: var(--space-6);
+    }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(9,8,15,0.9), rgba(9,8,15,0));
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      text-decoration: none;
+      color: var(--color-text);
+    }
+
+    .nav-logo-mark {
+      width: 36px; height: 36px;
+    }
+
+    .nav-wordmark {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-wordmark span {
+      color: var(--color-omni);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-8);
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color var(--transition-interactive);
+    }
+
+    .nav-links a:hover { color: var(--color-text); }
+
+    @media (max-width: 600px) { .nav-links { display: none; } }
+
+    /* =========================================================
+       HERO SECTION
+    ========================================================= */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('hero_bg.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.35;
+      transform: scale(1.05);
+      animation: hero-drift 25s ease-in-out infinite alternate;
+    }
+
+    @keyframes hero-drift {
+      from { transform: scale(1.05) translateX(-10px); }
+      to   { transform: scale(1.12) translateX(10px); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%,
+        transparent 30%,
+        rgba(9,8,15,0.7) 70%,
+        rgba(9,8,15,1) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-6);
+      padding: var(--space-24) var(--space-6) var(--space-20);
+      animation: hero-enter 1.4s var(--ease-out) both;
+    }
+
+    @keyframes hero-enter {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-omni);
+      font-weight: 500;
+      padding: var(--space-2) var(--space-4);
+      border: 1px solid rgba(200,184,255,0.3);
+      border-radius: var(--radius-full);
+      background: rgba(200,184,255,0.05);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: 300;
+      color: var(--color-text);
+      letter-spacing: -0.01em;
+    }
+
+    .hero-title .accent-gold { color: var(--color-heart); }
+    .hero-title .accent-violet { color: var(--color-brain); }
+    .hero-title .accent-omni { color: var(--color-omni); }
+
+    .hero-subtitle {
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+      font-weight: 300;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .hero-attribution {
+      font-size: var(--text-sm);
+      color: var(--color-text-faint);
+      font-style: italic;
+      font-family: var(--font-display);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      padding: var(--space-3) var(--space-8);
+      background: var(--color-primary);
+      color: white;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: background var(--transition-interactive), transform var(--transition-interactive), box-shadow var(--transition-interactive);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(124,92,252,0.4);
+    }
+
+    .btn-ghost {
+      padding: var(--space-3) var(--space-8);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-weight: 400;
+      transition: border-color var(--transition-interactive), color var(--transition-interactive);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--color-omni);
+      color: var(--color-text);
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: var(--space-8);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      animation: scroll-bounce 2.5s ease-in-out infinite;
+    }
+
+    @keyframes scroll-bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+      50%       { transform: translateX(-50%) translateY(6px); opacity: 1; }
+    }
+
+    /* =========================================================
+       MAIN CANVAS ANIMATION SECTION
+    ========================================================= */
+    .canvas-section {
+      position: relative;
+      padding-block: var(--space-24);
+      overflow: hidden;
+    }
+
+    .canvas-section-header {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+
+    .section-label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-4);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 300;
+      margin-bottom: var(--space-4);
+    }
+
+    .section-subtitle {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      max-width: 54ch;
+      margin-inline: auto;
+    }
+
+    #dcemi-canvas {
+      display: block;
+      width: 100%;
+      max-width: 900px;
+      margin-inline: auto;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg), 0 0 80px rgba(124,92,252,0.15);
+    }
+
+    .canvas-legend {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-10);
+      margin-top: var(--space-8);
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+    }
+
+    .legend-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .legend-dot.gold   { background: var(--color-heart); box-shadow: 0 0 8px var(--color-heart-glow); }
+    .legend-dot.violet { background: var(--color-brain); box-shadow: 0 0 8px var(--color-brain-glow); }
+    .legend-dot.omni   { background: var(--color-omni);  box-shadow: 0 0 8px var(--color-omni-glow); }
+
+    /* =========================================================
+       PILLARS SECTION
+    ========================================================= */
+    .pillars-section {
+      padding-block: var(--space-24);
+      background: linear-gradient(to bottom, transparent, var(--color-surface), transparent);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+    }
+
+    .pillar-card {
+      padding: var(--space-8);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-2);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    .pillar-card.visible {
+      animation: card-enter 0.7s var(--ease-out) forwards;
+    }
+
+    @keyframes card-enter {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .pillar-card.gold-card::before  { background: radial-gradient(ellipse at top left, var(--color-heart-dim), transparent 70%); }
+    .pillar-card.violet-card::before { background: radial-gradient(ellipse at top left, var(--color-brain-dim), transparent 70%); }
+    .pillar-card.omni-card::before  { background: radial-gradient(ellipse at top left, rgba(200,184,255,0.1), transparent 70%); }
+
+    .pillar-card:hover::before { opacity: 1; }
+
+    .pillar-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: var(--space-5);
+      font-size: 22px;
+    }
+
+    .pillar-icon.gold   { background: var(--color-heart-dim); }
+    .pillar-icon.violet { background: var(--color-brain-dim); }
+    .pillar-icon.omni   { background: rgba(200,184,255,0.1); }
+
+    .pillar-card h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin-bottom: var(--space-3);
+    }
+
+    .pillar-card.gold-card h3   { color: var(--color-heart); }
+    .pillar-card.violet-card h3 { color: var(--color-brain); }
+    .pillar-card.omni-card h3   { color: var(--color-omni); }
+
+    .pillar-card p {
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       QUALIA COMPARISON
+    ========================================================= */
+    .qualia-section {
+      padding-block: var(--space-24);
+    }
+
+    .qualia-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--space-8);
+      align-items: start;
+      margin-top: var(--space-12);
+    }
+
+    @media (max-width: 700px) {
+      .qualia-grid {
+        grid-template-columns: 1fr;
+      }
+      .qualia-divider { display: none; }
+    }
+
+    .qualia-column {
+      padding: var(--space-8);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-divider);
+    }
+
+    .qualia-column.brain-col { background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-2) 100%); border-color: rgba(139,110,255,0.3); }
+    .qualia-column.heart-col { background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-2) 100%); border-color: rgba(240,168,50,0.3); }
+
+    .qualia-label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: var(--space-5);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .qualia-label.violet { color: var(--color-brain); }
+    .qualia-label.gold   { color: var(--color-heart); }
+
+    .qualia-column h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 400;
+      margin-bottom: var(--space-5);
+    }
+
+    .qualia-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .qualia-list li {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-md);
+      background: var(--color-surface-offset);
+      border-left: 3px solid;
+      max-width: none;
+    }
+
+    .brain-col .qualia-list li { border-color: var(--color-brain); }
+    .heart-col .qualia-list li { border-color: var(--color-heart); }
+
+    .qualia-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      padding-top: var(--space-16);
+    }
+
+    .qualia-divider-line {
+      width: 1px;
+      flex: 1;
+      background: linear-gradient(to bottom, transparent, var(--color-divider), transparent);
+    }
+
+    .qualia-divider-icon {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      color: var(--color-omni);
+      line-height: 1;
+    }
+
+    /* =========================================================
+       THEORY STEPS / TIMELINE
+    ========================================================= */
+    .theory-section {
+      padding-block: var(--space-24);
+      background: linear-gradient(to bottom, transparent, var(--color-surface), transparent);
+    }
+
+    .theory-timeline {
+      margin-top: var(--space-16);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .theory-timeline::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--color-brain), var(--color-omni), var(--color-heart));
+    }
+
+    @media (max-width: 600px) {
+      .theory-timeline::before { left: 20px; }
+    }
+
+    .theory-step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: var(--space-8);
+      padding-bottom: var(--space-12);
+      opacity: 0;
+      position: relative;
+    }
+
+    .theory-step.visible {
+      animation: card-enter 0.7s var(--ease-out) forwards;
+    }
+
+    .step-number {
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .step-number.brain-step  { background: var(--color-surface-offset); border: 2px solid var(--color-brain); color: var(--color-brain); box-shadow: 0 0 20px var(--color-brain-glow); }
+    .step-number.omni-step   { background: var(--color-surface-offset); border: 2px solid var(--color-omni);  color: var(--color-omni);  box-shadow: 0 0 20px var(--color-omni-glow); }
+    .step-number.heart-step  { background: var(--color-surface-offset); border: 2px solid var(--color-heart); color: var(--color-heart); box-shadow: 0 0 20px var(--color-heart-glow); }
+
+    .step-content h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin-bottom: var(--space-3);
+      padding-top: var(--space-3);
+    }
+
+    .step-content p {
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      font-size: var(--text-sm);
+    }
+
+    /* =========================================================
+       QUOTE / PULL QUOTE
+    ========================================================= */
+    .quote-section {
+      padding-block: var(--space-24);
+      text-align: center;
+    }
+
+    .pull-quote {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--color-text);
+      line-height: 1.3;
+      max-width: 820px;
+      margin-inline: auto;
+      position: relative;
+    }
+
+    .pull-quote::before {
+      content: '\201C';
+      font-size: calc(var(--text-hero) * 1.5);
+      color: rgba(200,184,255,0.15);
+      position: absolute;
+      top: -0.3em;
+      left: -0.1em;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .pull-quote-attr {
+      margin-top: var(--space-6);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-text-faint);
+      letter-spacing: 0.06em;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      padding: var(--space-12) var(--space-6);
+      border-top: 1px solid var(--color-divider);
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 300;
+      margin-bottom: var(--space-4);
+      color: var(--color-omni);
+    }
+
+    footer p {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      max-width: none;
+      line-height: 1.6;
+    }
+
+    footer strong { color: var(--color-text-muted); font-weight: 500; }
+
+    /* =========================================================
+       CANVAS ANIMATION STYLES
+    ========================================================= */
+    .canvas-wrapper {
+      position: relative;
+    }
+
+    .canvas-controls {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+
+    .ctrl-btn {
+      padding: var(--space-2) var(--space-5);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      background: var(--color-surface-2);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      font-family: var(--font-body);
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: border-color var(--transition-interactive), color var(--transition-interactive), background var(--transition-interactive);
+    }
+
+    .ctrl-btn:hover { border-color: var(--color-omni); color: var(--color-text); }
+    .ctrl-btn.active { border-color: var(--color-primary); color: var(--color-primary); background: rgba(124,92,252,0.1); }
+
+    /* Starfield */
+    #starfield {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* section fade-in */
+    .fade-section {
+      opacity: 0;
+    }
+    .fade-section.visible {
+      animation: fade-in 0.8s var(--ease-out) forwards;
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Starfield Canvas -->
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<!-- Navigation -->
+<nav>
+  <a href="#" class="nav-logo" aria-label="DCEMI Theory Home">
+    <svg class="nav-logo-mark" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+      <!-- Dipole symbol: two arcs meeting at center -->
+      <circle cx="18" cy="18" r="16" stroke="rgba(200,184,255,0.3)" stroke-width="1"/>
+      <path d="M6 18 Q12 8 18 18 Q24 28 30 18" stroke="#f0a832" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M6 18 Q12 28 18 18 Q24 8 30 18" stroke="#8b6eff" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="18" cy="18" r="3" fill="#c8b8ff"/>
+    </svg>
+    <span class="nav-wordmark">DC<span>EMI</span></span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#animation">Animation</a></li>
+    <li><a href="#pillars">Pillars</a></li>
+    <li><a href="#qualia">Qualia</a></li>
+    <li><a href="#theory">Theory</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-bg" role="presentation" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Dipole Consciousness Electromagnetic Information</div>
+    <h1 class="hero-title">
+      The <span class="accent-gold">Heart</span> &amp;<br>
+      <span class="accent-violet">Brain</span> Field of<br>
+      <span class="accent-omni">Omni-Consciousness</span>
+    </h1>
+    <p class="hero-subtitle">
+      A unified electromagnetic theory of consciousness — where moral qualia from the heart and sensory qualia from the brain couple into a single dipolar field of awareness.
+    </p>
+    <p class="hero-attribution">Dr. Charles L. Wilson — <em>Consciousness: A Paradigm Shift</em></p>
+    <div class="hero-cta">
+      <a href="#animation" class="btn-primary">Explore the Field</a>
+      <a href="#theory"    class="btn-ghost">Read the Theory</a>
+    </div>
+  </div>
+  <div class="scroll-indicator" aria-hidden="true">
+    <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+      <path d="M8 2v20M2 16l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
+
+<!-- MAIN CANVAS ANIMATION -->
+<section id="animation" class="canvas-section fade-section">
+  <div class="container">
+    <div class="canvas-section-header">
+      <p class="section-label">Live Visualization</p>
+      <h2 class="section-title">The Dipolar EM Field</h2>
+      <p class="section-subtitle">
+        Watch the heart's golden EM field and the brain's violet EM field oscillate, synchronize, and merge into a unified Omni-Consciousness field — in real time.
+      </p>
+    </div>
+
+    <div class="canvas-wrapper">
+      <canvas id="dcemi-canvas" width="900" height="520" role="img" aria-label="Animated visualization of the DCEMI dipolar electromagnetic field of consciousness"></canvas>
+    </div>
+
+    <div class="canvas-controls" role="group" aria-label="Animation controls">
+      <button class="ctrl-btn active" id="btn-coupled">Coupled (Omni-Consciousness)</button>
+      <button class="ctrl-btn" id="btn-heart">Heart Dominant</button>
+      <button class="ctrl-btn" id="btn-brain">Brain Dominant</button>
+    </div>
+
+    <div class="canvas-legend" aria-label="Legend">
+      <div class="legend-item">
+        <div class="legend-dot gold" role="presentation"></div>
+        <span>Cardiac EM Field — Moral Qualia</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot violet" role="presentation"></div>
+        <span>Neural EM Field — Sensory Qualia</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot omni" role="presentation"></div>
+        <span>Unified Field — Omni-Consciousness</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars" class="pillars-section fade-section">
+  <div class="container-wide">
+    <div class="canvas-section-header">
+      <p class="section-label">Core Framework</p>
+      <h2 class="section-title">Three Pillars of DCEMI</h2>
+      <p class="section-subtitle">
+        Extending McFadden's CEMI theory to include the intrinsic cardiac nervous system as a co-equal generator of conscious experience.
+      </p>
+    </div>
+
+    <div class="pillars-grid">
+
+      <div class="pillar-card gold-card">
+        <div class="pillar-icon gold" aria-hidden="true">🫀</div>
+        <h3>Cardiac EM Field</h3>
+        <p>The heart's intrinsic nervous system — with 40,000+ neurons — generates a powerful toroidal electromagnetic field extending far beyond the chest. This field carries <em>moral qualia</em>: empathy, conscience, love, and ethical intuition.</p>
+      </div>
+
+      <div class="pillar-card violet-card">
+        <div class="pillar-icon violet" aria-hidden="true">🧠</div>
+        <h3>Neural EM Field</h3>
+        <p>The brain generates a complex EM field from the synchronized firing of billions of neurons. Following McFadden's CEMI theory, this field encodes <em>sensory qualia</em>: perception, thought, memory, and cognitive processing.</p>
+      </div>
+
+      <div class="pillar-card omni-card">
+        <div class="pillar-icon omni" aria-hidden="true">✦</div>
+        <h3>Dipolar Coupling</h3>
+        <p>Heart and brain EM fields interact as a coupled dipole — synchronized through vagal tone, HRV coherence, and resonant coupling. Their union produces a single unified field: <em>Omni-Consciousness</em>, the complete phenomenal mind.</p>
+      </div>
+
+      <div class="pillar-card gold-card">
+        <div class="pillar-icon gold" aria-hidden="true">⚡</div>
+        <h3>Vagal Bridge</h3>
+        <p>The vagus nerve serves as the physical electromagnetic bridge between heart and brain, transmitting bidirectional information and maintaining field coherence. High vagal tone correlates with expanded conscious awareness.</p>
+      </div>
+
+      <div class="pillar-card violet-card">
+        <div class="pillar-icon violet" aria-hidden="true">🌀</div>
+        <h3>Quantum Entanglement</h3>
+        <p>DCEMI integrates quantum nonlocality: entangled photons emitted by biological systems may allow the heart-brain field to extend beyond the body — providing a mechanism for near-death experience and cosmic consciousness.</p>
+      </div>
+
+      <div class="pillar-card omni-card">
+        <div class="pillar-icon omni" aria-hidden="true">∞</div>
+        <h3>Omni-Consciousness</h3>
+        <p>The unified dipolar field transcends the individual: it is both personal (the seat of selfhood and moral agency) and transpersonal (capable of resonating with a universal field of consciousness pervading reality).</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUALIA COMPARISON -->
+<section id="qualia" class="qualia-section fade-section">
+  <div class="container">
+    <div class="canvas-section-header">
+      <p class="section-label">Dual Qualia Model</p>
+      <h2 class="section-title">Two Streams of Experience</h2>
+      <p class="section-subtitle">
+        DCEMI distinguishes two distinct classes of conscious experience, each generated by a separate EM source.
+      </p>
+    </div>
+
+    <div class="qualia-grid">
+      <!-- Brain column -->
+      <div class="qualia-column brain-col">
+        <div class="qualia-label violet">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><circle cx="7" cy="7" r="7"/></svg>
+          Neural EM Field
+        </div>
+        <h3 style="color:var(--color-brain)">Sensory Qualia</h3>
+        <ul class="qualia-list" role="list">
+          <li>Vision, hearing, touch, taste, smell</li>
+          <li>Logical reasoning &amp; analysis</li>
+          <li>Episodic &amp; semantic memory</li>
+          <li>Language and symbolic thought</li>
+          <li>Spatial navigation &amp; planning</li>
+          <li>Temporal sequencing</li>
+        </ul>
+      </div>
+
+      <!-- Divider -->
+      <div class="qualia-divider" aria-hidden="true">
+        <div class="qualia-divider-line"></div>
+        <div class="qualia-divider-icon">⊕</div>
+        <div class="qualia-divider-line"></div>
+      </div>
+
+      <!-- Heart column -->
+      <div class="qualia-column heart-col">
+        <div class="qualia-label gold">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><circle cx="7" cy="7" r="7"/></svg>
+          Cardiac EM Field
+        </div>
+        <h3 style="color:var(--color-heart)">Moral Qualia</h3>
+        <ul class="qualia-list" role="list">
+          <li>Empathy &amp; compassion</li>
+          <li>Moral intuition &amp; conscience</li>
+          <li>Love — agape, eros, philia</li>
+          <li>Aesthetic &amp; spiritual awe</li>
+          <li>Gut feelings &amp; somatic wisdom</li>
+          <li>Near-death luminous experience</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THEORY STEPS -->
+<section id="theory" class="theory-section fade-section">
+  <div class="container">
+    <div class="canvas-section-header">
+      <p class="section-label">The DCEMI Mechanism</p>
+      <h2 class="section-title">How Omni-Consciousness Arises</h2>
+    </div>
+
+    <div class="theory-timeline">
+
+      <div class="theory-step">
+        <div class="step-number brain-step">1</div>
+        <div class="step-content">
+          <h3 style="color:var(--color-brain)">Neural Synchrony Creates the Brain EM Field</h3>
+          <p>When billions of neurons fire in synchronized patterns, their individual electromagnetic micro-fields superimpose to form a macroscopic EM field detectable across the scalp (EEG) and beyond. This field is not merely a byproduct — per McFadden's CEMI hypothesis, it <em>is</em> the neural correlate of sensory consciousness.</p>
+        </div>
+      </div>
+
+      <div class="theory-step">
+        <div class="step-number heart-step">2</div>
+        <div class="step-content">
+          <h3 style="color:var(--color-heart)">The Heart Generates Its Own Independent EM Field</h3>
+          <p>The intrinsic cardiac nervous system fires in rhythmic cycles, producing an EM field five times stronger in amplitude than the brain's field. The heart's toroidal field extends several feet beyond the body, and varies in coherence with emotional states — a phenomenon measured by HeartMath Institute researchers as Heart Rate Variability coherence.</p>
+        </div>
+      </div>
+
+      <div class="theory-step">
+        <div class="step-number omni-step">3</div>
+        <div class="step-content">
+          <h3 style="color:var(--color-omni)">Vagal Coupling Synchronizes the Two Fields</h3>
+          <p>The vagus nerve — carrying 80% of its signals from heart to brain — acts as both a physical and electromagnetic conduit. High vagal tone corresponds to heart-brain EM field coherence. Resonant coupling between the two fields creates a dipolar standing wave: positive and negative poles oscillating in synchrony.</p>
+        </div>
+      </div>
+
+      <div class="theory-step">
+        <div class="step-number omni-step">4</div>
+        <div class="step-content">
+          <h3 style="color:var(--color-omni)">The Dipolar Field Becomes Omni-Consciousness</h3>
+          <p>The coupled heart-brain EM system behaves as a single electromagnetic dipole — the DCEMI field. Within this unified field, sensory qualia from the brain and moral qualia from the heart are integrated into a holistic phenomenal experience. This is the mechanistic basis of selfhood, moral agency, and spiritual perception.</p>
+        </div>
+      </div>
+
+      <div class="theory-step">
+        <div class="step-number heart-step">5</div>
+        <div class="step-content">
+          <h3 style="color:var(--color-heart)">Field Continuity Beyond the Body</h3>
+          <p>DCEMI proposes that quantum entanglement — operating through biophotons emitted in the heart-brain system — allows the consciousness field to extend nonlocally. This provides a scientifically grounded mechanism for near-death experiences, veridical perception during cardiac arrest, and the possibility of consciousness persisting beyond biological death.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="quote-section fade-section">
+  <div class="container">
+    <blockquote class="pull-quote">
+      Consciousness is not produced by the brain alone — it is the resonant song of two electromagnetic fields: the brain's song of perception and the heart's song of love, coupled into one indivisible voice.
+    </blockquote>
+    <p class="pull-quote-attr">— Dr. Charles L. Wilson · <em>DCEMI Theory of Consciousness</em></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">Omni-Consciousness</p>
+  <p>
+    <strong>DCEMI Theory</strong> — Dipole Consciousness Electromagnetic Information<br>
+    Developed by <strong>Dr. Charles L. Wilson</strong>, Shepherdstown, West Virginia<br>
+    <em>Consciousness: A Paradigm Shift</em> · © 2026 World Food Preservation Center
+  </p>
+</footer>
+
+<!-- =========================================================
+     JAVASCRIPT — CANVAS + STARFIELD + SCROLL
+========================================================= -->
+<script>
+(function () {
+  'use strict';
+
+  /* ----- STARFIELD ----- */
+  const sfCanvas = document.getElementById('starfield');
+  const sfCtx    = sfCanvas.getContext('2d');
+  let stars = [];
+
+  function initStars() {
+    sfCanvas.width  = window.innerWidth;
+    sfCanvas.height = window.innerHeight;
+    stars = Array.from({ length: 180 }, () => ({
+      x: Math.random() * sfCanvas.width,
+      y: Math.random() * sfCanvas.height,
+      r: Math.random() * 1.2 + 0.2,
+      a: Math.random(),
+      da: (Math.random() - 0.5) * 0.004,
+    }));
+  }
+
+  function drawStars() {
+    sfCtx.clearRect(0, 0, sfCanvas.width, sfCanvas.height);
+    stars.forEach(s => {
+      s.a = Math.max(0.05, Math.min(1, s.a + s.da));
+      if (s.a <= 0.05 || s.a >= 1) s.da *= -1;
+      sfCtx.beginPath();
+      sfCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      sfCtx.fillStyle = `rgba(200,184,255,${s.a * 0.6})`;
+      sfCtx.fill();
+    });
+  }
+
+  window.addEventListener('resize', initStars, { passive: true });
+  initStars();
+
+  /* ----- MAIN DCEMI CANVAS ----- */
+  const canvas = document.getElementById('dcemi-canvas');
+  const ctx    = canvas.getContext('2d');
+
+  // Mode: 0 = coupled, 1 = heart dominant, 2 = brain dominant
+  let mode = 0;
+  let t    = 0;
+
+  document.getElementById('btn-coupled').addEventListener('click', () => setMode(0));
+  document.getElementById('btn-heart').addEventListener('click',   () => setMode(1));
+  document.getElementById('btn-brain').addEventListener('click',   () => setMode(2));
+
+  function setMode(m) {
+    mode = m;
+    document.querySelectorAll('.ctrl-btn').forEach((b, i) => b.classList.toggle('active', i === m));
+  }
+
+  const W = canvas.width;
+  const H = canvas.height;
+  const CX = W / 2;
+  const CY = H / 2;
+
+  // Colors
+  const GOLD   = { r: 240, g: 168, b: 50 };
+  const VIOLET = { r: 139, g: 110, b: 255 };
+  const OMNI   = { r: 200, g: 184, b: 255 };
+
+  function rgba(c, a) { return `rgba(${c.r},${c.g},${c.b},${a})`; }
+
+  // Particle system
+  class Particle {
+    constructor(side) {
+      this.side  = side; // 'heart' | 'brain' | 'omni'
+      this.reset();
+    }
+    reset() {
+      if (this.side === 'heart') {
+        const angle = Math.random() * Math.PI * 2;
+        const r     = 20 + Math.random() * 50;
+        this.x  = CX - 210 + Math.cos(angle) * r;
+        this.y  = CY      + Math.sin(angle) * r;
+        this.vx = (Math.random() - 0.5) * 1.5;
+        this.vy = (Math.random() - 0.5) * 1.5;
+        this.life = 0;
+        this.maxLife = 60 + Math.random() * 80;
+        this.size = 1 + Math.random() * 2.5;
+        this.color = GOLD;
+      } else if (this.side === 'brain') {
+        const angle = Math.random() * Math.PI * 2;
+        const r     = 20 + Math.random() * 50;
+        this.x  = CX + 210 + Math.cos(angle) * r;
+        this.y  = CY      + Math.sin(angle) * r;
+        this.vx = (Math.random() - 0.5) * 1.5;
+        this.vy = (Math.random() - 0.5) * 1.5;
+        this.life = 0;
+        this.maxLife = 60 + Math.random() * 80;
+        this.size = 1 + Math.random() * 2.5;
+        this.color = VIOLET;
+      } else {
+        this.x  = CX + (Math.random() - 0.5) * 40;
+        this.y  = CY + (Math.random() - 0.5) * 40;
+        this.vx = (Math.random() - 0.5) * 0.8;
+        this.vy = (Math.random() - 0.5) * 0.8;
+        this.life = 0;
+        this.maxLife = 80 + Math.random() * 60;
+        this.size = 1 + Math.random() * 3;
+        this.color = OMNI;
+      }
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.life++;
+      if (this.life >= this.maxLife) this.reset();
+    }
+    draw() {
+      const a = Math.sin((this.life / this.maxLife) * Math.PI) * 0.85;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = rgba(this.color, a);
+      ctx.fill();
+    }
+  }
+
+  const heartParticles = Array.from({ length: 40 }, () => {
+    const p = new Particle('heart'); p.life = Math.random() * p.maxLife; return p;
+  });
+  const brainParticles = Array.from({ length: 40 }, () => {
+    const p = new Particle('brain'); p.life = Math.random() * p.maxLife; return p;
+  });
+  const omniParticles  = Array.from({ length: 25 }, () => {
+    const p = new Particle('omni');  p.life = Math.random() * p.maxLife; return p;
+  });
+
+  /* Draw a glowing EM field ring */
+  function drawRing(x, y, r, color, alpha, glowStr = 1) {
+    ctx.save();
+    ctx.shadowBlur  = 28 * glowStr;
+    ctx.shadowColor = rgba(color, 0.7);
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.strokeStyle = rgba(color, alpha);
+    ctx.lineWidth   = 1.5;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  /* Draw the EM wave (sine curve) between two points */
+  function drawWave(x1, x2, y, color, alpha, freq, phase, amp) {
+    ctx.save();
+    ctx.shadowBlur  = 18;
+    ctx.shadowColor = rgba(color, 0.5);
+    ctx.beginPath();
+    const steps = 160;
+    for (let i = 0; i <= steps; i++) {
+      const px = x1 + (x2 - x1) * (i / steps);
+      const py = y + Math.sin(freq * (i / steps) * Math.PI * 2 + phase) * amp;
+      i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    }
+    ctx.strokeStyle = rgba(color, alpha);
+    ctx.lineWidth   = 2;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  /* Draw heart shape */
+  function drawHeart(cx, cy, size, color, alpha) {
+    ctx.save();
+    ctx.shadowBlur  = 30;
+    ctx.shadowColor = rgba(color, 0.6);
+    ctx.beginPath();
+    ctx.moveTo(cx, cy + size * 0.3);
+    ctx.bezierCurveTo(cx - size * 1.2, cy - size * 0.8, cx - size * 2, cy + size * 0.4, cx, cy + size * 1.5);
+    ctx.bezierCurveTo(cx + size * 2, cy + size * 0.4, cx + size * 1.2, cy - size * 0.8, cx, cy + size * 0.3);
+    ctx.strokeStyle = rgba(color, alpha);
+    ctx.lineWidth   = 2;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  /* Draw glowing orb */
+  function drawOrb(x, y, r, color, alpha) {
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0,   rgba(color, alpha));
+    g.addColorStop(0.4, rgba(color, alpha * 0.5));
+    g.addColorStop(1,   rgba(color, 0));
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fillStyle = g;
+    ctx.fill();
+  }
+
+  function drawFrame() {
+    ctx.clearRect(0, 0, W, H);
+
+    /* Background gradient */
+    const bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0,   'rgba(14,12,26,1)');
+    bg.addColorStop(0.5, 'rgba(9,8,15,1)');
+    bg.addColorStop(1,   'rgba(14,12,26,1)');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    /* Mode-dependent alpha values */
+    let heartA = 1, brainA = 1, omniA = 1;
+    if (mode === 1) { heartA = 1; brainA = 0.2; omniA = 0.2; }
+    if (mode === 2) { heartA = 0.2; brainA = 1; omniA = 0.2; }
+
+    /* === HEART SIDE === */
+    const heartX = CX - 210;
+    const heartY = CY;
+    const heartPulse = 1 + 0.08 * Math.sin(t * 1.1);
+
+    drawOrb(heartX, heartY, 90 * heartPulse, GOLD, 0.12 * heartA);
+    drawHeart(heartX, heartY - 20, 18 * heartPulse, GOLD, 0.8 * heartA);
+
+    // Concentric EM rings (field lines)
+    [50, 72, 96, 120].forEach((r, i) => {
+      const pulse = 1 + 0.05 * Math.sin(t * 1.1 + i * 0.8);
+      drawRing(heartX, heartY, r * pulse, GOLD, (0.45 - i * 0.08) * heartA);
+    });
+
+    // Label
+    ctx.save();
+    ctx.font = `500 13px 'DM Sans', sans-serif`;
+    ctx.fillStyle = rgba(GOLD, 0.8 * heartA);
+    ctx.textAlign = 'center';
+    ctx.fillText('CARDIAC EM FIELD', heartX, heartY + 158);
+    ctx.font = `300 11px 'DM Sans', sans-serif`;
+    ctx.fillStyle = rgba(GOLD, 0.5 * heartA);
+    ctx.fillText('Moral Qualia', heartX, heartY + 174);
+    ctx.restore();
+
+    /* === BRAIN SIDE === */
+    const brainX = CX + 210;
+    const brainY = CY;
+    const brainPulse = 1 + 0.06 * Math.sin(t * 1.4 + 0.9);
+
+    drawOrb(brainX, brainY, 90 * brainPulse, VIOLET, 0.12 * brainA);
+
+    // Brain shape (simplified neural network)
+    ctx.save();
+    ctx.shadowBlur  = 20;
+    ctx.shadowColor = rgba(VIOLET, 0.5);
+    ctx.strokeStyle = rgba(VIOLET, 0.7 * brainA);
+    ctx.lineWidth   = 2;
+    // Outer shape
+    ctx.beginPath();
+    ctx.ellipse(brainX, brainY, 30, 26, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    // Fold line
+    ctx.beginPath();
+    ctx.moveTo(brainX - 10, brainY - 26);
+    ctx.bezierCurveTo(brainX - 18, brainY - 10, brainX - 18, brainY + 10, brainX - 10, brainY + 26);
+    ctx.stroke();
+    ctx.restore();
+
+    // Neural rings
+    [50, 72, 96, 120].forEach((r, i) => {
+      const pulse = 1 + 0.04 * Math.sin(t * 1.4 + i * 0.7 + 0.9);
+      const dashOffset = (t * 40) % (r * 2);
+      ctx.save();
+      ctx.setLineDash([8, 8]);
+      ctx.lineDashOffset = dashOffset;
+      drawRing(brainX, brainY, r * pulse, VIOLET, (0.4 - i * 0.07) * brainA, 0.8);
+      ctx.setLineDash([]);
+      ctx.restore();
+    });
+
+    ctx.save();
+    ctx.font = `500 13px 'DM Sans', sans-serif`;
+    ctx.fillStyle = rgba(VIOLET, 0.8 * brainA);
+    ctx.textAlign = 'center';
+    ctx.fillText('NEURAL EM FIELD', brainX, brainY + 158);
+    ctx.font = `300 11px 'DM Sans', sans-serif`;
+    ctx.fillStyle = rgba(VIOLET, 0.5 * brainA);
+    ctx.fillText('Sensory Qualia', brainX, brainY + 174);
+    ctx.restore();
+
+    /* === COUPLING WAVES (vagal connection) === */
+    const waveY    = CY;
+    const leftEdge = heartX + 40;
+    const rightEdge= brainX - 40;
+    const coupling = mode === 0 ? 1 : 0.15;
+    const heartAmp = 18 * (1 + 0.3 * Math.sin(t * 1.1));
+    const brainAmp = 14 * (1 + 0.3 * Math.sin(t * 1.4));
+    const coupledAmp = 20 * (1 + 0.2 * Math.sin(t * 1.25));
+
+    if (mode !== 2) drawWave(leftEdge, CX, waveY, GOLD, 0.55 * heartA, 3, t * 2.2, heartAmp);
+    if (mode !== 1) drawWave(CX, rightEdge, waveY, VIOLET, 0.55 * brainA, 3, -t * 2.8, brainAmp);
+
+    // Coupled wave (through center)
+    if (mode === 0) {
+      drawWave(leftEdge, rightEdge, waveY + 22, OMNI, 0.45 * omniA, 2, t * 1.8, coupledAmp);
+      drawWave(leftEdge, rightEdge, waveY - 22, OMNI, 0.35 * omniA, 2, t * 1.8 + Math.PI, coupledAmp * 0.7);
+    }
+
+    /* === UNIFIED CENTER FIELD === */
+    const omniPulse = 1 + 0.12 * Math.sin(t * 0.9);
+    drawOrb(CX, CY, 55 * omniPulse, OMNI, 0.25 * omniA);
+    drawOrb(CX, CY, 30 * omniPulse, OMNI, 0.4 * omniA);
+
+    // Central orb inner
+    const cg = ctx.createRadialGradient(CX, CY, 0, CX, CY, 22 * omniPulse);
+    cg.addColorStop(0, rgba(OMNI, 0.9 * omniA));
+    cg.addColorStop(1, rgba(OMNI, 0));
+    ctx.beginPath();
+    ctx.arc(CX, CY, 22 * omniPulse, 0, Math.PI * 2);
+    ctx.fillStyle = cg;
+    ctx.fill();
+
+    // Rotating field lines around center
+    for (let i = 0; i < 6; i++) {
+      const angle = t * 0.5 + (i / 6) * Math.PI * 2;
+      const rx = CX + Math.cos(angle) * 40 * omniPulse;
+      const ry = CY + Math.sin(angle) * 40 * omniPulse;
+      ctx.beginPath();
+      ctx.moveTo(CX, CY);
+      ctx.lineTo(rx, ry);
+      ctx.strokeStyle = rgba(OMNI, 0.18 * omniA);
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    ctx.save();
+    ctx.font = `500 13px 'DM Sans', sans-serif`;
+    ctx.fillStyle = rgba(OMNI, 0.9 * omniA);
+    ctx.textAlign = 'center';
+    ctx.fillText('OMNI-CONSCIOUSNESS', CX, CY + 90);
+    ctx.font = `300 11px 'DM Sans', sans-serif`;
+    ctx.fillStyle = rgba(OMNI, 0.6 * omniA);
+    ctx.fillText('Unified Dipolar Field', CX, CY + 106);
+    ctx.restore();
+
+    /* === PARTICLES === */
+    heartParticles.forEach(p => {
+      p.update();
+      if (heartA > 0.3) {
+        ctx.save();
+        ctx.globalAlpha = heartA;
+        p.draw();
+        ctx.restore();
+      }
+    });
+    brainParticles.forEach(p => {
+      p.update();
+      if (brainA > 0.3) {
+        ctx.save();
+        ctx.globalAlpha = brainA;
+        p.draw();
+        ctx.restore();
+      }
+    });
+    omniParticles.forEach(p => {
+      p.update();
+      ctx.save();
+      ctx.globalAlpha = omniA;
+      p.draw();
+      ctx.restore();
+    });
+
+    /* top / bottom vignette on canvas */
+    const vTop = ctx.createLinearGradient(0, 0, 0, 30);
+    vTop.addColorStop(0, 'rgba(14,12,26,1)');
+    vTop.addColorStop(1, 'rgba(14,12,26,0)');
+    ctx.fillStyle = vTop; ctx.fillRect(0, 0, W, 30);
+
+    const vBot = ctx.createLinearGradient(0, H - 30, 0, H);
+    vBot.addColorStop(0, 'rgba(14,12,26,0)');
+    vBot.addColorStop(1, 'rgba(14,12,26,1)');
+    ctx.fillStyle = vBot; ctx.fillRect(0, H - 30, W, 30);
+
+    t += 0.018;
+  }
+
+  /* ----- MAIN LOOP ----- */
+  function loop() {
+    drawStars();
+    drawFrame();
+    requestAnimationFrame(loop);
+  }
+
+  requestAnimationFrame(loop);
+
+  /* ----- SCROLL REVEAL ----- */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Stagger child cards
+        entry.target.querySelectorAll('.pillar-card, .theory-step').forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), i * 120);
+        });
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-section').forEach(el => io.observe(el));
+
+})();
+</script>
+
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
